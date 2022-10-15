@@ -1,0 +1,214 @@
+version: "3.1"
+
+stories:
+
+- story: asking bot
+  steps:
+  - intent: check_human  
+  - action: utter_bot
+
+- story: fallback
+  steps: 
+  - intent: nlu_fallback  
+  - action: utter_default    
+
+- story: say ok when user affirms after utter_help
+  steps:
+  - action: utter_help
+  - intent: affirm
+  - action: utter_ok  
+
+- story: say ok when user affirms after action_show_balance
+  steps:
+  - action: action_show_balance
+  - intent: affirm
+  - action: utter_ok
+
+- story: say ok when user affirms after action_show_recipients
+  steps:
+  - action: action_show_recipients
+  - intent: affirm
+  - action: utter_ok
+  
+- story: say ok when user affirms after action_show_transfer_charge
+  steps:
+  - action: action_show_transfer_charge
+  - intent: affirm
+  - action: utter_ok
+  
+- story: greet/bye path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_help
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: say goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: help
+  steps:
+  - intent: help
+  - action: utter_help
+  
+- story: is there a transfer charge
+  steps:
+  - intent: ask_transfer_charge
+  - action: action_show_transfer_charge
+
+- story: Show list of known recipients
+  steps:
+  - intent: check_recipients
+  - action: action_show_recipients
+  
+- story: Show bank account balance
+  steps:
+  - intent: check_balance
+  - action: action_show_balance
+
+- story: Show specific credit card account balance
+  steps:
+  - intent: check_balance
+  - action: action_show_balance
+  
+- story: Show all credit cards account balances
+  steps:
+  - intent: check_balance
+  - action: action_show_balance
+  
+- story: check list of known recipients
+  steps:
+  - intent: check_recipients
+  - action: action_show_recipients
+
+- story: help2
+  steps:
+  - intent: help
+  - action: utter_help
+  - intent: greet
+  - action: utter_greet
+  - action: utter_help
+  - intent: thankyou
+  - action: utter_noworries
+
+- story: help3
+  steps:
+  - intent: help
+  - action: utter_help
+  - intent: greet
+  - action: utter_greet
+  - action: utter_help
+  - intent: affirm
+  - action: utter_ok
+
+- story: lost card
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - action: utter_help
+  - intent: lost_card
+  - action: utter_lost_card
+  - action: action_cancel_card
+  - intent: affirm
+  - action: utter_ask_whatelse
+
+
+- story: lost card2
+  steps:
+  - intent: lost_card
+  - action: utter_lost_card
+  - action: action_cancel_card
+  - intent: affirm
+  - action: utter_ask_whatelse
+  - intent: deny
+  - action: utter_goodbye
+
+- story: retirement plans
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_help
+  - intent: retirement_plan
+  - action: action_retirement_plan
+  - action: utter_ask_whatelse
+
+- story: retirement plans2
+  steps: 
+  - intent: retirement_plan
+  - action: action_retirement_plan
+  - action: utter_ask_whatelse
+  - intent: check_balance
+  - action: action_show_balance
+
+- story: interest rate
+  steps:
+  - intent: interest_rate
+  - action: action_interest_rate
+  - action: utter_ask_whatelse
+  - or:
+    - intent: search_transactions
+    - intent: check_earnings
+  - action: transaction_search_form
+  - active_loop: transaction_search_form
+
+- story: interest rate2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_help
+  - intent: interest_rate
+  - action: action_interest_rate
+  - action: utter_ask_whatelse
+  - intent: check_balance
+  - action: action_show_balance
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: interest rate3 
+  steps:
+  - intent: interest_rate
+  - action: action_interest_rate
+  - action: utter_ask_whatelse
+  - or:
+    - intent: search_transactions
+    - intent: check_earnings
+  - action: transaction_search_form
+  - active_loop: transaction_search_form
+ 
+- story: online banking
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - action: utter_help
+  - intent: online_banking
+  - action: action_online_banking
+
+- story: online banking2
+  steps: 
+  - intent: online_banking
+  - action: action_online_banking
+
+- story: mobile banking3
+  steps:
+  - intent: mobile_banking 
+  - action: action_mobile_banking
+
+- story: mobile banking4
+  steps: 
+  - intent: mobile_banking
+  - action: action_mobile_banking
+  - intent: check_balance
+  - action: action_show_balance  
+
+- story: check balance + mobile banking
+  steps:
+  - intent: greet
+  - action: utter_greet 
+  - action: utter_help
+  - intent: check_balance
+  - action: action_show_balance
+  - intent: mobile_banking
+  - action: action_mobile_banking

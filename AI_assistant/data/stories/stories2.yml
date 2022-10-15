@@ -1,0 +1,556 @@
+version: "3.1"
+ 
+stories:
+
+- story: pay credit card happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_help
+  - intent: pay_cc
+  - action: cc_payment_form
+  - active_loop: cc_payment_form
+  - active_loop: null
+  - action: action_pay_cc
+
+- story: transfer money happy path w/o recipient
+  steps:
+  - intent: transfer_money
+  - action: transfer_money_form
+  - active_loop: transfer_money_form
+  - active_loop: null
+  - action: action_transfer_money
+  
+- story: transfer money happy path w/ recipient
+  steps:
+  - intent: transfer_money
+  - slot_was_set:
+    - PERSON: Urbanus Muthama
+  - action: transfer_money_form
+  - active_loop: transfer_money_form
+  - active_loop: null
+  - action: action_transfer_money
+  
+- story: check earnings happy path
+  steps:
+  - intent: check_earnings
+  - action: transaction_search_form
+  - active_loop: transaction_search_form
+  - active_loop: null
+  - action: action_transaction_search
+  
+- story: search transactions happy path
+  steps:
+  - intent: search_transactions
+  - action: transaction_search_form
+  - active_loop: transaction_search_form
+  - active_loop: null
+  - action: action_transaction_search
+
+- story: change pin happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_help
+  - intent: change_pin
+  - action: action_change_pin
+
+- story: show statement happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_help
+  - intent: search_transactions
+  - action: transaction_search_form
+  - active_loop: transaction_search_form
+  - active_loop: null
+  - action: action_transaction_search
+  - intent: thankyou
+  - action: utter_noworries
+
+- story: show credit cards happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_help
+  - intent: show_credit_cards
+  - action: action_show_credit_cards 
+
+- story: show accounts happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_help
+  - intent: show_accounts
+  - action: action_show_accounts 
+
+- story: check balance happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_help
+  - intent: show_accounts
+  - action: action_show_balance  
+  
+- story: greet + search transactions happy path + thankyou
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_help
+  - intent: search_transactions
+  - action: transaction_search_form
+  - active_loop: transaction_search_form
+  - active_loop: null
+  - action: action_transaction_search
+  - intent: thankyou
+  - action: utter_noworries
+
+- story: Show bank account balance + transfer money
+  steps:
+  - intent: check_balance
+  - action: action_show_balance
+  - intent: transfer_money
+  - action: transfer_money_form
+  - active_loop: transfer_money_form
+  - active_loop: null
+  - action: action_transfer_money
+  - intent: thankyou
+  - action: utter_noworries
+  
+- story: Show bank account balance + thankyou + transfer money
+  steps:
+  - intent: check_balance
+  - action: action_show_balance
+  - intent: thankyou
+  - action: utter_noworries
+  - intent: transfer_money
+  - action: transfer_money_form
+  - active_loop: transfer_money_form
+  - active_loop: null
+  - action: action_transfer_money
+  
+- story: Show bank account balance + ok + transfer money
+  steps:
+  - intent: check_balance
+  - action: action_show_balance
+  - intent: affirm
+  - action: utter_ok
+  - intent: transfer_money
+  - action: transfer_money_form
+  - active_loop: transfer_money_form
+  - active_loop: null
+  - action: action_transfer_money
+
+- story: Show bank account balance + ok + show recipients + ok + show transfer charge + ok + transfer money
+  steps:
+  - intent: check_balance
+  - action: action_show_balance
+  - intent: affirm
+  - action: utter_ok
+  - intent: check_recipients
+  - action: action_show_recipients
+  - intent: affirm
+  - action: utter_ok
+  - intent: ask_transfer_charge
+  - action: action_show_transfer_charge
+  - intent: affirm
+  - action: utter_ok
+  - intent: transfer_money
+  - action: transfer_money_form
+  - active_loop: transfer_money_form
+  - active_loop: null
+  - action: action_transfer_money
+  
+- story: Show bank account balance + ok + pay credit card
+  steps:
+  - intent: check_balance
+  - action: action_show_balance
+  - intent: affirm
+  - action: utter_ok
+  - intent: pay_cc
+  - action: cc_payment_form
+  - active_loop: cc_payment_form
+  - active_loop: null
+  - action: action_pay_cc
+  
+- story: pay credit card and afterwards check account balance
+  steps:
+  - intent: pay_cc
+  - action: cc_payment_form
+  - active_loop: cc_payment_form
+  - active_loop: null
+  - action: action_pay_cc
+  - intent: check_balance
+  - action: action_show_balance
+  
+- story: Pay Credit Card, while in form ask account balance
+  steps:
+  - intent: pay_cc
+  - action: cc_payment_form
+  - active_loop: cc_payment_form
+  - intent: check_balance
+  - action: action_show_balance
+  - action: cc_payment_form 
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_pay_cc  
+  - intent: thankyou
+  - action: utter_noworries
+
+- story: transfer money, while in form ask transfer charge
+  steps:
+  - intent: transfer_money
+  - action: transfer_money_form
+  - active_loop: transfer_money_form
+  - intent: ask_transfer_charge
+  - action: action_show_transfer_charge
+  - action: transfer_money_form
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_transfer_money
+  - intent: thankyou
+  - action: utter_noworries
+    
+- story: transfer money, while in form ask known recipients
+  steps:
+  - intent: transfer_money
+  - action: transfer_money_form
+  - active_loop: transfer_money_form
+  - intent: check_recipients
+  - action: action_show_recipients
+  - action: transfer_money_form
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_transfer_money
+
+- story: transfer money, while in form ask balance
+  steps:
+  - intent: transfer_money
+  - action: transfer_money_form
+  - active_loop: transfer_money_form
+  - intent: check_balance
+  - action: action_show_balance
+  - action: transfer_money_form
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_transfer_money
+  
+- story: transfer money, while in form ask known recipients and transfer charge
+  steps:
+  - intent: transfer_money
+  - action: transfer_money_form
+  - active_loop: transfer_money_form
+  - intent: check_recipients
+  - action: action_show_recipients
+  - action: transfer_money_form
+  - intent: ask_transfer_charge
+  - action: action_show_transfer_charge
+  - action: transfer_money_form
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_transfer_money
+
+- story: pay credit card + switch to transfer money, deny
+  steps:
+  - intent: pay_cc
+  - action: cc_payment_form
+  - active_loop: cc_payment_form
+  - intent: transfer_money
+  - action: action_switch_forms_ask
+  - slot_was_set:
+    - next_form_name: transfer_money_form
+  - intent: deny
+  - action: action_switch_forms_deny
+  - slot_was_set:
+    - next_form_name: null
+  - action: cc_payment_form
+  - active_loop: cc_payment_form
+
+- story: pay credit card + switch to search transactions, deny
+  steps:
+  - intent: pay_cc
+  - action: cc_payment_form
+  - active_loop: cc_payment_form
+  - intent: check_earnings
+  - action: action_switch_forms_ask
+  - slot_was_set:
+    - next_form_name: transaction_search_form
+  - intent: deny
+  - action: action_switch_forms_deny
+  - slot_was_set:
+    - next_form_name: null
+  - action: cc_payment_form
+  - active_loop: cc_payment_form
+  
+- story: search transactions + switch to transfer money, deny
+  steps:
+  - intent: check_earnings
+  - action: transaction_search_form
+  - active_loop: transaction_search_form
+  - intent: transfer_money
+  - action: action_switch_forms_ask
+  - slot_was_set:
+    - next_form_name: transfer_money_form
+  - intent: deny
+  - action: action_switch_forms_deny
+  - slot_was_set:
+    - next_form_name: null
+  - action: transaction_search_form
+  - active_loop: transaction_search_form  
+  
+- story: search transactions + switch to pay credit card, deny
+  steps:
+  - intent: check_earnings
+  - action: transaction_search_form
+  - active_loop: transaction_search_form
+  - intent: pay_cc
+  - action: action_switch_forms_ask
+  - slot_was_set:
+    - next_form_name: cc_payment_form
+  - intent: deny
+  - action: action_switch_forms_deny
+  - slot_was_set:
+    - next_form_name: null
+  - action: transaction_search_form
+  - active_loop: transaction_search_form
+  
+- story: transfer money + switch to search transactions, deny
+  steps:
+  - intent: transfer_money
+  - action: transfer_money_form
+  - active_loop: transfer_money_form
+  - intent: check_earnings
+  - action: action_switch_forms_ask
+  - slot_was_set:
+    - next_form_name: transaction_search_form
+  - intent: deny
+  - action: action_switch_forms_deny
+  - slot_was_set:
+    - next_form_name: null
+  - action: transfer_money_form
+  - active_loop: transfer_money_form
+
+- story: transfer money + switch to pay credit card, deny
+  steps:
+  - intent: transfer_money
+  - action: transfer_money_form
+  - active_loop: transfer_money_form
+  - intent: pay_cc
+  - action: action_switch_forms_ask
+  - slot_was_set:
+    - next_form_name: cc_payment_form
+  - intent: deny
+  - action: action_switch_forms_deny
+  - slot_was_set:
+    - next_form_name: null
+  - action: transfer_money_form
+  - active_loop: transfer_money_form
+      
+- story: providing a name must be inform inten
+  steps:
+  - intent: transfer_money
+  - action: transfer_money_form
+  - active_loop: transfer_money_form
+  - slot_was_set:
+    - requested_slot: PERSON
+  - intent: inform
+  - slot_was_set:
+    - requested_slot: amount-of-money
+  - action: transfer_money_form
+
+- story: change pin and afterwards check account balance
+  steps:
+  - intent: change_pin
+  - action: action_change_pin
+  - intent: check_balance
+  - action: action_show_balance
+
+- story: change pin and afterwards show statement
+  steps:
+  - intent: change_pin
+  - action: action_change_pin
+  - intent: search_transactions
+  - action: transaction_search_form
+  - active_loop: transaction_search_form
+  - active_loop: null
+  - action: action_transaction_search
+  - intent: thankyou
+  - action: utter_noworries
+
+- story: change pin and afterwards ask pay credit cards
+  steps:
+  - intent: change_pin
+  - action: action_change_pin
+  - intent: pay_cc
+  - action: cc_payment_form
+  - active_loop: cc_payment_form
+
+- story: change pin and afterwards ask transfer money
+  steps:
+  - intent: change_pin
+  - action: action_change_pin
+  - intent: transfer_money
+  - action: transfer_money_form
+  - active_loop: transfer_money_form
+
+- story: change pin + ask check balance
+  steps:
+  - intent: change_pin
+  - action: action_change_pin
+  - intent: check_balance
+  - action: action_show_balance
+
+- story: change pin+pay credit cards
+  steps:
+  - intent: change_pin
+  - action: action_change_pin
+  - intent: pay_cc
+  - action: cc_payment_form
+  - active_loop: cc_payment_form
+  - active_loop: null
+  - action: action_pay_cc
+
+- story: change pin + transfer money
+  steps:
+  - intent: change_pin
+  - action: action_change_pin
+  - intent: transfer_money
+  - action: transfer_money_form
+  - active_loop: transfer_money_form
+  - active_loop: null
+  - action: action_transfer_money
+  
+- story: change pin+check statement
+  steps:
+  - intent: change_pin
+  - action: action_change_pin
+  - intent: search_transactions
+  - action: transaction_search_form
+  - active_loop: transaction_search_form
+  - active_loop: null
+  - action: action_transaction_search
+  - intent: thankyou
+  - action: utter_noworries
+
+- story: change pin+check earnings
+  steps:
+  - intent: change_pin
+  - action: action_change_pin
+  - or:
+    - intent: search_transactions
+    - intent: check_earnings
+  - action: transaction_search_form
+  - active_loop: transaction_search_form
+
+- story: show credit cards+ask pay cc
+  steps:
+  - intent: show_credit_cards
+  - action: action_show_credit_cards  
+  - intent: pay_cc
+  - action: cc_payment_form
+  - active_loop: cc_payment_form
+ 
+- story: show credit cards+transfer money
+  steps:
+  - intent: show_credit_cards
+  - action: action_show_credit_cards 
+  - intent: transfer_money
+  - action: transfer_money_form
+  - active_loop: transfer_money_form
+  
+- story: show credit cards + search transactions
+  steps:
+  - intent: show_credit_cards
+  - action: action_show_credit_cards 
+  - or:
+    - intent: search_transactions
+    - intent: check_earnings
+  - action: transaction_search_form
+  - active_loop: transaction_search_form
+  
+- story: show credit cards and afterwards ask transfer money
+  steps:
+  - intent: show_credit_cards
+  - action: action_show_credit_cards
+  - intent: transfer_money
+  - action: transfer_money_form
+  - active_loop: transfer_money_form
+  - active_loop: null
+  - action: action_transfer_money  
+
+- story: show credit cards and afterwards ask payment of credit cards
+  steps:
+  - intent: show_credit_cards
+  - action: action_show_credit_cards
+  - intent: pay_cc
+  - action: cc_payment_form
+  - active_loop: cc_payment_form
+  - active_loop: null
+  - action: action_pay_cc
+
+- story: show credit cards and afterwards ask search transactions
+  steps:
+  - intent: show_credit_cards
+  - action: action_show_credit_cards
+  - or:
+    - intent: search_transactions
+    - intent: check_earnings
+  - action: transaction_search_form
+  - active_loop: transaction_search_form
+
+- story: show accounts and afterwards ask transfer money
+  steps:
+  - intent: show_accounts
+  - action: action_show_accounts
+  - intent: transfer_money
+  - action: transfer_money_form
+  - active_loop: transfer_money_form       
+
+- story: show accounts and afterwards ask payment of credit cards
+  steps:
+  - intent: show_accounts
+  - action: action_show_accounts
+  - intent: pay_cc
+  - action: cc_payment_form
+  - active_loop: cc_payment_form
+
+- story: show accounts and afterwards ask search transactions
+  steps:
+  - intent: show_accounts
+  - action: action_show_accounts
+  - or:
+    - intent: search_transactions
+    - intent: check_earnings
+  - action: transaction_search_form
+  - active_loop: transaction_search_form
+
+- story: check balance + ask search transactions
+  steps:
+  - intent: check_balance
+  - action: action_show_balance
+  - or:
+    - intent: search_transactions
+    - intent: check_earnings
+  - action: transaction_search_form
+  - active_loop: transaction_search_form
+ 
+- story: check balance+payment of credit cards
+  steps:
+  - intent: check_balance
+  - action: action_show_balance
+  - intent: pay_cc
+  - action: cc_payment_form
+  - active_loop: cc_payment_form
+
+- story: check balance + transfer money
+  steps:
+  - intent: check_balance
+  - action: action_show_balance
+  - intent: transfer_money
+  - action: transfer_money_form
+  - active_loop: transfer_money_form     

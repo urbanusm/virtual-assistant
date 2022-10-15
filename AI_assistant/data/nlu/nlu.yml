@@ -1,0 +1,952 @@
+version: "3.1"
+nlu:
+- intent: check_human
+  examples: |
+    - are you a bot?
+    - am i speaking to an ai?
+    - are you a human or a bot?
+    - are you real? 
+    - are you virtual? 
+    - are you virtual Assistant?    
+    - are you an ai?
+    - aren't you a bot
+    - are you a chatbot
+    - are you a real bot?
+    - are you a robot
+    - are you ai
+    - are you machine learning?
+    - are you artificial
+    - are you artificial intelligence
+    - are you real
+    - are you really a bot
+    - are you robot
+    - are you sure that you're a bot?
+    - bot?  
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - whats your real name 
+    - how should i call you
+    - do you have a name?
+    - What is your name?
+    - May I know your name?
+    - What do people call you?
+    - Do you have a name for yourself?    
+- intent: affirm
+  examples: |
+    - indeed
+    - correct
+    - that sounds good
+    - yes
+    - yess please
+    - of course
+    - yup
+    - yeah
+    - yes please
+    - yes plz
+    - Sure
+    - Ok
+    - sweet
+    - cool,
+    - yes...
+    - y
+    - ok
+    - ye
+    - okay
+    - That would be great
+    - YES
+    - YUP
+    - Yea
+    - Yeah
+    - Yeah sure
+    - Yep
+    - Yep that's fine
+    - Yep!
+    - Yepp
+    - Yes
+    - Yes I do
+    - Yes please
+    - Yes please!
+    - Yes, I accept
+- intent: ask_transfer_charge
+  examples: |
+    - Will I be charged for transferring money
+    - do transfers cost something?
+    - is there a transfer charge?
+    - Is there a charge
+    - will i be charged for a transaction?
+    - do xfers cost something?
+    - is there a transfer fee
+    - is there a xfer fee
+    - how much is the transfer fee
+    - whats the cost of transferring money
+    - what am I charged upon money transfer
+    - are you gonna bill me for this exchange
+    - whats the xfer price for this account
+    - okay but how much to move this money?
+    - how much is the fee to shift my money around
+    - if I send money to someone will I be charged extra for that?
+    - is there a charge when I send money to someone
+    - what is the fee for sending money to someone else
+    - I sent money to my friend will I be charged extra for that
+    - what is the percentage fee for transactions to another person
+    - are there any transaction fees or charges I should know about?
+    - tell me about transfer fees
+- intent: check_balance
+  examples: |
+    - How much money is on my [bank](account_type) account?
+    - what's my [balance](amount-of-money)?
+    - what's my [current balance](amount-of-money)?
+    - What's left on that account?
+    - How much do I have on that account?
+    - What's the [balance](amount-of-money) on that account?
+    - How much money is left on that account?
+    - what is my account [balance](amount-of-money)
+    - what's my account [balance](amount-of-money)?
+    - what's my account [balance](amount-of-money)
+    - whats my account [balance](amount-of-money)
+    - what is my [bank](account_type) account [balance](amount-of-money)
+    - what's my [bank](account_type) account [balance](amount-of-money)?
+    - what's my [bank](account_type) account [balance](amount-of-money)
+    - whats my [bank](account_type) account [balance](amount-of-money)
+    - What's my [credit card](account_type) [balance](amount-of-money)
+    - What's my [credit](account_type) [balance](amount-of-money)
+    - How much money do I owe on my [credit cards](account_type)
+    - Show me my [credit card](account_type) [balance](amount-of-money)
+    - What [credit](account_type) accounts do I have
+    - Show me my [credit](account_type) accounts
+    - Whats the [balance](amount-of-money) on my [credit](account_type) account
+    - What's my [credit](account_type) account
+    - What's my [visa](credit_card) [card](account_type) [balance](amount-of-money)
+    - Show me my [equity gold](credit_card) [balance](amount-of-money)
+    - What's my [equity classic](credit_card) [balance](amount-of-money)
+    - What's the [balance](amount-of-money) on the [equity classic](credit_card) account
+    - what's my [mastercard](credit_card) [credit card](account_type) [balance](amount-of-money)?
+    - what's my [credit card](account_type) [balance](amount-of-money)?
+    - what's my [credit card](account_type) account [balance](amount-of-money)?
+    - What is my [visa](credit_card) [card](account_type) [balance](amount-of-money)?
+    - whats my [credit card](account_type) [balance](amount-of-money)
+    - What is my [visa](credit_card) [balance](amount-of-money)?
+    - whats my [mastercard](credit_card) [card](account_type) [balance](amount-of-money)?
+    - what's my [american express](credit_card)'s [card](account_type) [balance](amount-of-money)?
+    - what's my [mastercard](credit_card) account [balance](amount-of-money)?
+    - How much money have i spent lately?
+    - I should check my [credit card]{"entity": "account_type", "value": "credit"} [balance](amount-of-money) first
+    - check my [credit card]{"entity": "account_type", "value": "credit"} [balance](amount-of-money)
+    - check my [credit card]{"entity": "account_type", "value": "credit"} [balance](amount-of-money) first
+    - Can you tell me my account [balance](amount-of-money)?
+    - Hello, I would like to know how much money is in much money is in my account
+    - hi, whats my account bal please
+    - so.... what's my [balance](amount-of-money)?
+    - whats my [current balance](amount-of-money)
+    - What's my [balance](amount-of-money)?
+    - How much money do I have?
+    - Yeah, I like coffee 👀 But how much money do I have?
+    - Yeah, I know 😀 Since it's so nice: How much money do I have?
+    - Wait, I'll have to check my balance first. Can you do that please?
+    - Hi, I need to know how much money is in my [checking](account_type) account
+    - Balance please
+- intent: check_earnings
+  examples: |
+    - How much money went into my account [last month](date)?
+    - How much money did I make [last year](date)?
+    - What did I earn [last month](date)?
+    - How much did I make [last month](date)?
+    - How much money did I make [last week](date)?
+    - how much was deposited in my account [last month](date)?
+    - how much was deposited in my account in the [last two weeks](date)?
+    - check deposits for [last week](date)
+    - total deposits over [last year](date)
+    - how much was deposited in [January](date)
+    - how much money have I earned?
+    - what did I earn?
+    - How much have i earned?
+    - how much did I make
+    - am I rich yet?
+    - am I a millionaire
+    - how much cash is rolling through my account
+    - how much money is in the money making machine account?
+    - what did I make in the [last year](date)?
+    - show me how much I've earned in the [last week](date)
+    - can i afford to go on vacation
+    - rent is due soon how much do I have in my account
+- intent: deny
+  examples: |
+    - not really
+    - no
+    - I don't think so
+    - never
+    - no way
+    - nope
+    - no thanks
+    - I dunno
+    - Nothing!
+    - nevermind
+    - n
+    - i decline
+    - i don not like this
+    - i don't think so
+    - i don't want either of those
+    - i don't want to
+    - i don't want to give you my email
+    - i dont want to
+    - i dont want to accept :P lol
+    - i guess it means - no
+    - i'm afraid not
+    - i'm not sure
+    - i donno
+- intent: goodbye
+  examples: |
+    - see you later
+    - goodbye
+    - i'm done
+    - quit
+    - stop
+    - bye
+    - Adios
+    - BYEE
+    - GOODBYE
+    - Thanks a lot. See ya later
+    - have a good day. time to go, bye
+    - bye bye
+    - ok i gtg
+    - bye bye bot
+    - bye for now
+    - bye udo
+    - bye was nice talking to you
+    - bye!
+    - byee
+    - catch you later
+    - ciao
+    - cya
+    - farewell
+    - good bye
+    - good bye rasa bot!
+    - good night
+    - goodbye
+    - goodbye.
+    - goodnight
+    - gotta go
+- intent: greet
+  examples: |
+    - yo
+    - good morning
+    - hi
+    - hey there
+    - hey
+    - good evening
+    - hello
+    - Hello?
+    - HEY
+    - hello are you still there
+    - hallo
+    - HI
+    - Hey
+    - Hi
+    - hi!
+    - hello there
+    - hi there
+    - Hello
+    - hello its ella
+    - Hola.
+    - welcome
+    - howdy
+    - how are you doing?
+    - hey, how are you doing
+    - how are you feeling?
+    - hey, how are you feeling
+    - how are you holding up?
+    - good day
+- intent: inform
+  examples: |
+    - $10
+    - 5000 kenya shillings
+    - 500 Euros
+    - €100
+    - $500
+    - 100 dollars
+    - 1000 dollars
+    - [tomorrow](date)
+    - [next week](date)
+    - [yesterday](date)
+    - for [today](date)
+    - [last week](date)
+    - the [past month](date)
+    - the [past two days](date)
+    - the [last two weeks](date)
+    - at [kilimall](vendor_name)
+    - [jumia](vendor_name)
+    - at [jiji](vendor_name)
+    - at [jumia](vendor_name)
+    - [jiji](vendor_name)
+    - [kilimall](vendor_name)
+    - [jumia](vendor_name)
+    - [jiji](vendor_name)
+    - I want to pay the [current balance](amount-of-money)
+    - [current balance](amount-of-money)
+    - [full](amount-of-money)
+    - in [full](amount-of-money)
+    - the [full balance](amount-of-money)
+    - [minimum balance](amount-of-money)
+    - I want to pay the [minimum balance](amount-of-money)
+    - the [current balance](amount-of-money)
+    - the [minimum balance](amount-of-money)
+    - my [minimum balance](amount-of-money)
+    - my [current balance](amount-of-money)
+    - [visa](credit_card) [card](account_type)
+    - all [cards](account_type)
+    - [mastercard](credit_card) [card](account_type)
+    - [american express](credit_card) [card](account_type)
+    - [visa](credit_card)
+    - [american express](credit_card)
+    - [equity gold](credit_card)
+    - [visa](credit_card) account
+    - [equty classic](credit_card) account
+    - [equity gold](credit_card) account
+    - [visa](credit_card) [credit card](account_type)
+    - [mastercard](credit_card) [credit card](account_type)
+    - [american express](credit_card) [credit card](account_type)
+    - my [equity classic](credit_card) [credit card](account_type)
+    - my [mastercard](credit_card) [credit card](account_type)
+    - my [american express](credit_card) [credit card](account_type)
+    - my [equity classic](credit_card) [card](account_type)
+    - my [mastercard](credit_card) [card](account_type)
+    - my [equity gold](credit_card) [card](account_type)
+    - towards my [equity classic](credit_card) [card](account_type)
+    - towards my [mastercard](credit_card) [card](account_type)
+    - towards my [equity gold](credit_card) [card](account_type)
+    - for [sunday](date)
+    - for [friday](date)
+    - for [tomorrow](date)
+    - for [saturday](date)
+    - I want to pay the [minimum balance](amount-of-money) on my [visa](credit_card) [credit card](account_type) [today](date) at [2:00 pm](time)
+    - [today](date)
+    - Please schedule it for the [first of next month](date)
+    - a hundred dollars
+    - [mastercard](credit_card)
+    - [visa](credit_card)
+    - [american express](credit_card)
+    - my [equity classic](credit_card) account
+    - my [credit card]{"entity": "account_type", "value": "credit"} account ending in 4321
+    - My [Visa](credit_card) account
+    - A friend.
+    - [Alexandra](PERSON)?
+    - today please
+    - [mastercard](credit_card)
+    - My [visa](credit_card)
+    - [Bob Mwiti](PERSON)
+    - [bill Mambo](PERSON)
+    - [aish juma](PERSON)
+    - [John Mwanzia](PERSON)
+    - [gary nyioke](PERSON)
+    - [Claire Mercy](PERSON)
+    - [Imani Ndogo](PERSON)
+    - [darnell Onyango](PERSON)
+    - [Raymond Muthama](PERSON)
+    - [chenge Maina](PERSON)
+    - to my [brother](PERSON)
+    - to my [sister](PERSON)
+    - my [dad](PERSON)
+    - William Ruto
+    - Evan Mwaura
+    - Lisa Macello
+    - Karen Lancaster
+    - Mercy Donald
+    - Kyle Njeri
+    - Keith Kipkorir
+    - Diana Mogaka
+    - Laura Ndeto
+    - In that case, let's go with Ndambuki
+    - My brother
+    - Jane
+    - [Georgina Mutunga](PERSON)
+    - Sara Waithera
+    - my wife's
+    - Andrey Omari
+    - [this weekend](date)
+    - all of them
+    - Karen Nyamu
+    - Ali Ben 
+    - Daniel Abishai
+    - Evaline Njeru
+    - [Gringtos](credit_card)
+    - [11:00 am](time)
+    - [9:00 AM](time)
+    - [2:30 pm](time)
+    - [12 noon](time)
+    - [8:00 am](time)
+    - [1600 hours](time)
+    - [0800 hours](time)
+    - [4:45 PM](time)
+- intent: pay_cc
+  examples: |
+    - I would like to pay the [minimum balance](amount-of-money) on my [american express](credit_card) [card](account_type)
+    - I want to pay my [credit card](account_type)
+    - I want to pay my [card](account_type)
+    - Pay my [card](account_type)
+    - I want to pay my [equity gold](credit_card) bill
+    - Pay my [discover](credit_card)
+    - I want to pay my [mastercard](credit_card) bill
+    - Pay my [mastercard](credit_card)
+    - I want to pay my [equity gold](credit_card) bill
+    - Pay my [mastercard](credit_card)
+    - I want to pay my [MasterCard](credit_card) bill
+    - I want to pay my [credit card](account_type) bill
+    - I want to pay the [current balance](amount-of-money) on my [credit card](account_type)
+    - can you help me pay the [current balance](amount-of-money) on my [credit card](account_type)
+    - i want to pay off my [credit card](account_type)
+    - I want to pay off my [credit card](account_type)
+    - i want to pay my [credit card](account_type)
+    - i want to pay off my [equity express](credit_card) [credit card](account_type)
+    - I want to pay my [current balance](amount-of-money) on my [american express](credit_card) [credit card](account_type)
+    - i want to pay my [current balance](amount-of-money) on my [visa](credit_card) [credit card](account_type)
+    - I want to pay 500 Euros on my [visa](credit_card) [credit card](account_type) on Sunday
+    - I want to pay my [current balance](amount-of-money) on my [visa](credit_card) [credit card](account_type) today
+    - i need to pay off my [equity classic](credit_card) [credit card](account_type)
+    - Please schedule  a payment towards my [credit card](account_type) for [April 12th](date)
+    - Can I schedule a payment towards my [credit card](account_type) for [tomorrow](date) at [1:00 pm](time)?
+    - Pay off my [minimum balance](amount-of-money) please
+    - i would like to pay 10000 kenya shillings to my [credit card]{"entity": "account_type", "value": "credit"}
+    - I would also like to pay my [visa](credit_card) bill
+    - Pay off my [credit card]{"entity": "account_type", "value": "credit"}, please
+    - I guess it is. Since it's so much, let's pay off my [credit](account_type)
+    - Let's pay that [credit card]{"entity": "account_type", "value": "credit"} bill
+    - I want to pay 100 dollars toward my [visa](credit_card) [card](account_type), [tomorrow] at [10:30 AM](time) 
+    - pay ksh.50000 towards [visa](credit_card) [card](account_type), [tomorrow] around [3:45 PM](time)
+    - id like to pay my bill
+    - could I pay off my [credit card]{"entity": "account_type", "value": "credit"}?
+    - pay off my [credit card]{"entity": "account_type", "value": "credit"}
+    - i wanna pay my [credit card]{"entity": "account_type", "value": "credit"}
+    - pay a bill
+    - can I pay my [card]{"entity": "account_type", "value": "credit"}?
+- intent: search_transactions
+  examples: |
+    - how much did I spend at [jiji](vendor_name) this week?
+    - what is my typical spending at [kilimall](vendor_name)?
+    - I want to check my spending history
+    - how much did I spend at [jumia](vendor_name) last week?
+    - I need to check my spending history
+    - I want to check my spending
+    - I want to check my spending history at [jumia](vendor_name)
+    - i want to check my spending history
+    - i want to see my transaction history
+    - I want to search my past transactions
+    - can I search my transaction history
+    - can I look at past transactions
+    - Please show me my bank statement
+    - I would like to see my bank statement
+    - Show me my all my transactions
+    - Give me a list of my statement history
+    - Can you provide me my bank statement?
+    - Extract Statements
+    - Print statements
+    - i want to see my statements
+    - Can I have a look at my statement please
+    - Display my statements
+    - My statement
+    - I’d like to see my statement
+    - I want to see my statement
+    - Please extract statement of my movements
+    - Make a statement
+    - Display Statements
+    - Show statements
+    - Show account movements
+    - Could you show me my statements
+    - I would like to see my statements
+    - Show my statements
+    - Account Transaction overview
+    - Show my account statements
+    - Please show my bank entries.
+    - Please show my debits and credits.
+    - Can I have a look at my receipts and payments?
+    - Can I see my inflows and outflows?
+    - Please show me my transaction history
+    - Please retieve my transaction log
+    - I would like to see my bank account statement history    
+    - I want to search my transactions with [kilimall](vendor_name)
+    - can i seem my transactions with [jiji](vendor_name)
+    - how much did i spend at [jumia](vendor_name) last month?
+    - what did i spend last month?
+    - How much did I spend last month?
+    - What did I spend at [Carrefour](vendor_name) last month?
+    - What did I spend at [Carrefour](vendor_name) last year?
+    - how much did i spend at [jumia](vendor_name) last year
+    - Yes! How much did I spend on [jumia](vendor_name) last month?
+    - How much did I spend at Chiken inn last month?
+    - what places have I spent money?
+    - What did I spend at [jumia](vendor_name) in may?
+    - How much money did I lose to [jumia](vendor_name) in may?
+    - Oh how much did I actually spend at [jiji](vendor_name) last month? I'd love to know.
+    - Can you tell me how much I spent at [jiji](vendor_name) this month?
+    - Can you tell me how much I spent at coffeeshops this month?
+    - Can you tell me how much I spent on coffee this month?
+    - What did I spend at [kilimall](vendor_name) last month?
+    - what did I spend at [jiji](vendor_name) last month
+    - where did I spend the most money last month?
+- intent: thankyou
+  examples: |
+    - thank you goodbye
+    - okay thank you goodbye
+    - thank you bye
+    - um okay thank you good bye
+    - thank you
+    - and thats all thank you and good bye
+    - okay thank you
+    - thanks
+    - thanks goodbye
+    - thank you and good bye
+    - Thanks!
+    - Awesome, you are a good bot!
+    - great!
+    - I see, thanks
+    - Oh thats good!
+    - it's good :-)
+    - thnaks
+    - good job bot
+    - great
+    - thanks for the help
+    - thanks you
+    - thanks!
+    - thankyou
+    - thnks
+    - thx
+    - thanks for your information
+    - thanks f
+    - Asante
+- intent: transfer_money
+  examples: |
+    - Ahh, okay so I want to make a transfer to [Bob Mwiti](PERSON).
+    - Are online transfers available
+    - can I pay someone
+    - Can I please transfer some money between my accounts
+    - can I transfer money to [Kyle Njeri](PERSON)?
+    - can i transfer money to [Salome Otieno](PERSON)
+    - Can I transfer money to a friend?
+    - can I transfer money to my [mom](PERSON)
+    - Can I transfer money?
+    - Hi I like to send money
+    - Hi I like to send money to [John Mwanzia](PERSON)
+    - How can I transfer money
+    - I just want to send a hundred dollars to my savings
+    - i mean i want to transfer money
+    - I need to go to the bank to make a transfer
+    - I need to make a money transfer
+    - I need to make a transfer
+    - I need to make a transference
+    - I need to make an account transfer
+    - I need to make an urgent transfer to [Bob William](PERSON), can you do it?
+    - I need to pay a friend.
+    - Can i send money to my [M Pesa account] {"entity":"mobile_banking","value":"safaricom"} 
+    - Please send money to my [mpesa account] {"entity":"mobile_banking","value":"safaricom"}
+    - Can i transfer some money to my [M-pesa](mobile_banking) account
+    - send money to [m-pesa](mobile_banking) account
+    - Hey, i like to send money to my [M-Pesa](mobile_banking) account
+    - Transfer money to [Mpesa](mobile_banking)
+    - I would like to send mony to my [MPesa](mobile_banking) account
+    - Can I send money to [Airtel Money] {"entity":"mobile_banking","value":"airtel"}
+    - send money to [airtel money](mobile_banking)
+    - Transfer some cash to [Airtelmoney]{"entity":"mobile_banking","value":"airtel"}
+    - Please send money to my [Airtel-Money](mobile_banking) account  
+    - i need to send money
+    - I need to send money
+    - I need to send money to my kid
+    - I need to transfer
+    - I need to transfer money
+    - I need to transfer money to [Jeff Kuria](PERSON), my son
+    - I need to transfer money to a friend
+    - I need to transfer money to my co-worker who paid for lunch
+    - I need to transfer money to my grandma [Judith Mbula](PERSON).
+    - I want to do fund transfer.
+    - I want to do money transaction
+    - I want to make a transfer
+    - I want to make a transfer of one hundred fifty dollars to my savings account
+    - I want to make a transfer today
+    - I want to make a wire transfer
+    - I want to pay [Beth](PERSON)
+    - I want to pay [Georgina Mutunga](PERSON)
+    - I want to pay money.
+    - I want to pay someone
+    - I want to send money
+    - I want to transfer KES 10000 to [Adan Mohamed](PERSON)
+    - i want to transfer 50000 kenya shillings to [Jane Simon](PERSON)
+    - I want to transfer 100 Euros to [Tommy](PERSON)
+    - i want to transfer $100 to my [daughter](PERSON)
+    - i want to transfer $400 to [Alex Wekesa](PERSON)
+    - I want to transfer funds.
+    - I want to transfer money
+    - i want to transfer money please
+    - i want to transfer money to [Lucky Mueni](PERSON)
+    - I want to transfer money to my wife's account
+    - I want to transfer some amount to someone
+    - I want to transfer to [Kelly](PERSON)
+    - I want to wire two hundred dollars from my checking account
+    - I would like to make a payment
+    - I would like to make a transfer
+    - I would like to transfer 50$ to [Jacob juma](PERSON)
+    - I would like to transfer money
+    - I would like to transfer money to [Philip](PERSON)
+    - I would like to wire some money
+    - I’d like to make a transfer
+    - I’d like to send money
+    - I'd like to send 50$ to [John](PERSON)
+    - I'd like to transfer sixty dollars from my checking account
+    - Is it possible to transfer money online
+    - Money transfer
+    - need to transfer money
+    - Ok pay [Emma Ndanu](PERSON)
+    - Pay $50 to [Patrick Wafula](PERSON)
+    - pay [Emanuel Omondi](PERSON)
+    - pay [Evan Odero](PERSON)
+    - Pay [Karen Nyamu](PERSON) 60 Euros
+    - pay [Lisa Edwin](PERSON) please
+    - pay [Monaica Mulenge](PERSON) ksh.60000
+    - Pay [Peter Korir](PERSON) $50
+    - pay Cate Mwelu 400 Euros please
+    - pay my friend
+    - Please transfer 50 dollars to [Andrew Marende](PERSON)
+    - send $50 to [john jacob](PERSON)
+    - transfer $60 to [Jason Jacob](PERSON)
+    - transfer $60 to [Salome Okelo](PERSON)
+    - Transfer money
+    - transfer money to [ethan Bahati](PERSON)
+    - transfer money to [sara Waithera](PERSON)
+    - Transfer money to Alex 
+    - What do I need to do to transfer some money between my accounts
+    - I want to pay [John](PERSON)
+- intent: check_recipients
+  examples: |
+    - Who can I send money to?
+    - Who are my known recipients
+    - Show me my list of recipients
+    - Show the recipient list
+    - Show me people I can send money to
+    - Who is a valid payee
+    - who can I pay?
+    - who can I transfer money?
+    - who's in my recipient list?
+    - who can I transfer money to?
+    - Who is on your list?
+    - who is in my list of kown recipients?
+    - Who all can I transfer money to?
+    - Who can I transfer money to?
+    - Okay. Who can I transfer money to then?
+    - can I see the list of known recipients?
+    - tell me who I can share my money with
+    - whats my recipient list
+    - can I send money to anyone?
+    - who exactly am I able to send money to
+    - if I want to transfer money can i send it to anyone
+    - show me my money sending list
+- intent: help
+  examples: |
+    - help
+    - what can you do?
+    - what can I ask you?
+    - what do you do?
+    - what can you help me with?
+    - help me
+    - help, what do you do
+    - how do I use this
+    - how can you help me
+    - What are the things that you can do?
+    - What else can you help me with?
+    - can you do anything else?
+    - can you help me?
+    - come back
+    - cool! can I do something else here?
+    - hello what can you do for me
+    - help
+    - help me
+    - help please
+    - help pls
+    - help?
+    - hep me
+- intent: human_handoff
+  examples: |
+    - handoff
+    - operator
+    - I want a human
+    - can I speak to an agent
+    - real agent please
+    - real human
+    - chat with a live agent
+    - give me a person please
+    - i want to talk to a human
+    - transfer to a human
+    - Please give me to a human
+    - can I talk to human?
+    - can I talk to human
+    - talk to human
+    - i want human :(
+    - can i talk to human
+    - i want to talk to a human
+    - i want to speak to human
+    - can i talk to a real person?
+    - connect me to a real person
+    - I need a real person
+    - can i took with a real person
+    - let me speak to a real person
+    - let me speak to a real person please
+    - i want to talk to a real person
+- intent: out_of_scope
+  examples: |
+    - what is the square root of 5
+    - I want to know the weather
+    - what is the meaning of life.
+    - Fridge Isn't Running
+    - my tv isn't working
+    - I want a pizza
+    - my washing machine isn't working
+    - what year is it
+    - order a pizza
+    - I want to order a pizza
+    - what is the weather today
+    - what is the weather
+    - what the weather today ?
+    - hows the weather
+    - tell me a joke
+    - Can I get a hamburger?
+    - Can YouTube talk?
+    - Can you call me back ?
+    - Can you give me your datacenter's password
+    - Can you give me your datacenter's password?
+    - Can you make sandwiches?
+    - Can you please send me an uber
+    - ofif fsdfafsfs
+    - Who is the president of kenya?
+    - Who won the last goodnight
+    - who is the best actor?
+    - Which is the best car in the market?
+    - Which is the nearest resturant
+- intent: check_balance+transfer_money
+  examples: |
+    - How much money is on my account because I want to pay [John](PERSON)
+    - Good morning, How much money is on my [bank](account_type) account because I want to transfer $100 to [Bob Mwiti](PERSON)
+    - I would like to know How much money is on my [bank](account_type) account because i want to transfer money to [Sally](PERSON)
+    - Could you please tell me how much money is on my account because I want to transfer money
+    - what's my [balance](amount-of-money) because I want to pay someone
+    - what's my [current balance](amount-of-money) coz i want to pay someone
+    - What's left on that account for I need to transfer money to a friend
+    - would you please tell me what's left on that account and transfer 50000 kenya shillings to my [mom](PERSON)
+    - How much do I have on that account because I want to pay [Bert](PERSON)
+    - What's the [balance](amount-of-money) on that account?. I would like to pay my friend
+    - How much money is left on that account because i want to transfer money
+    - what is my account [balance](amount-of-money), could you transfer $100 to [Tommy Muendo](PERSON)
+    - what's my account [balance](amount-of-money)?. I would like to transfer $400 to [Urbanus Muthama](PERSON)
+    - what is my [bank](account_type) account [balance](amount-of-money) because I want to pay [Georgina Mutunga](PERSON)
+    - what's my [bank](account_type) account [balance](amount-of-money)? Could you also pay [James Ochuka](PERSON) $40 please
+    - what's my [bank](account_type) account [balance](amount-of-money), please transfer $60 to [Jason Jacob](PERSON)
+    - whats my [bank](account_type) account [balance](amount-of-money). Please pay [Evan Ireri](PERSON)
+    - What's my [credit card](account_type) [balance](amount-of-money), could you plese pay [Lisa](PERSON) please
+    - What's my [credit](account_type) [balance](amount-of-money)? Can I transfer money to [Kyle Njeri](PERSON) ?
+    - Show me my [credit card](account_type) [balance](amount-of-money) and please pay [Karen Nyamu](PERSON) 60 Euros
+    - Whats the [balance](amount-of-money) on my [credit](account_type) account and could you also pay [Monica Mulenge](PERSON) $60
+    - What's my [visa](credit_card) [card](account_type) [balance](amount-of-money) because I want to do fund transfer
+    - Show me my [mastercard](credit_card) [balance](amount-of-money) then make a transfer of 10000 kenya shillings to [Salome Okelo](PERSON)
+    - What's my [equity gold](credit_card) [balance](amount-of-money) because i need to transfer money
+    - What's my [equity classic](credit_card) [balance](amount-of-money) because I want to transfer to [Keith Kipkorir](PERSON)
+    - Show me my [mastercard](credit_card) [balance](amount-of-money) then Pay [Peterson Mwalimu](PERSON) 100 Euros please.
+    - What's the [balance](amount-of-money) on the [visa](credit_card) account because i want to Pay 100 dollars to [Patrick Abunga](PERSON)
+    - what's my [mastercard](credit_card) [credit card](account_type) [balance](amount-of-money) because i would like to pay [Emma Ndanu](PERSON)
+    - what's my [credit card](account_type) [balance](amount-of-money) because i want to pay [Emanuel Mutisya](PERSON)
+    - what's my [credit card](account_type) account [balance](amount-of-money) 'cause i want to transfer $100 to [Jane Simon](PERSON)
+    - what's my [credit card](account_type) account [balance](amount-of-money) coz i want to transfer $100 to my [daughter](PERSON)
+    - What is my [equity gold](credit_card) [card](account_type) [balance](amount-of-money)?. I want to transfer money please
+    - I mean whats my [credit card](account_type) [balance](amount-of-money) because i would like to transfer money
+    - What is my [equity classic](credit_card) [balance](amount-of-money)?. I need to pay a friend.
+    - whats my [american express](credit_card) [card](account_type) [balance](amount-of-money)?. I would like to transfer money to [ethan Bahati](PERSON)
+    - what's my [american express](credit_card)'s [card](account_type) [balance](amount-of-money)? Transfer money to [sara Waithera](PERSON)
+    - I want to know how much money have i spent lately because I want to know the exact amount of money to transfer to my grandma [Judith Mbula](PERSON).
+    - check my [credit card]{"entity": "account_type", "value": "credit"} [balance](amount-of-money) please because i want to transfer money to [Latisha](PERSON)
+    - Should I check my [credit card]{"entity": "account_type", "value": "credit"} [balance](amount-of-money) [first](account_type) before i send money to [Raymond](PERSON)
+    - check my [credit card]{"entity": "account_type", "value": "credit"} [balance](amount-of-money) because I need to make an urgent transfer to [Bob William](PERSON), can you do it?
+    - Can you tell me my account [balance](amount-of-money) before I transfer money to a friend?
+    - Hello, I would like to know how much money is in much money is in my account then transfer money to [Jeff Kuria](PERSON), my son
+    - hi, whats my account bal please because I need to send money to my kid
+    - so.... what's my [balance](amount-of-money) because I need to transfer money
+    - I want to know my [current balance](amount-of-money) then send ksh.50000 to [john jacob](PERSON)
+    - How much money do I have cos I need to transfer money to my co-worker who paid for lunch
+    - Balance please because I would like to transfer money to [Philip](PERSON)
+    - Hi, I need to know how much money is in my [checking](account_type) account then transfer 5000 kenya shillings to [Mohamed Ali](PERSON)
+    - Wait, I'll have to check my balance first then send some money to [Brian Musyoki](PERSON) Can you do that please?    
+- intent: check_balance+pay_cc
+  examples: |
+    - I would like to know how much money is on my account then pay the [minimum balance](amount-of-money) on my [visa](credit_card) [card](account_type)
+    - Good morning, how much money is on my [bank](account_type) account because I want to pay my [credit card](account_type)
+    - I would like to know How much money is on my [bank](account_type) account because I want to pay my [card](account_type)
+    - what's my [balance](amount-of-money) because need to Pay my [card](account_type)
+    - what's my [current balance](amount-of-money) because I want to pay my [equity gold](credit_card) bill
+    - What's left on that account for i need to Pay my [mastercard](credit_card)
+    - would you please tell me what's left on that account and pay my [equity classic](credit_card) bill
+    - How much do I have on that account because because i need to Pay my [visa](credit_card)
+    - What's the [balance](amount-of-money) on that account?. I would like to pay my [visa](credit_card) bill
+    - How much money is left on that account because i want to Pay my [mastercard](credit_card)
+    - What's the [balance](amount-of-money) on that account?. I want to pay my [MasterCard](credit_card) bill
+    - what is my account [balance](amount-of-money), I want to pay my [credit card](account_type) bill
+    - whats my [bank](account_type) account [balance](amount-of-money), could you pay the [current balance](amount-of-money) on my [credit card](account_type)
+    - what's my account [balance](amount-of-money) ? Could you help me pay the [current balance](amount-of-money) on my [credit card](account_type)
+    - I would appreciate if you tell me my account [balance](amount-of-money) and also pay off my [credit card](account_type)
+    - Good evening, how much money is on my [bank](account_type) account because I want to pay off [visa](credit_card) [credit card](account_type)
+    - I would like to know How much money is on my [bank](account_type) account and also schedule  a payment towards my [credit card](account_type) for April 12th
+    - what's my [balance](amount-of-money) because I want you to schedule a payment towards my [credit card](account_type) for tomorrow.
+    - what's my [current balance](amount-of-money) because i would like to pay $1200 to my [credit card]{"entity": "account_type", "value": "credit"}
+    - Wait, I'll have to check my balance first then pay my [visa](credit_card) bill
+    - Hi, I need to know how much money is in my [checking](account_type) account then Pay off my [credit card]{"entity": "account_type", "value": "credit"}, please
+    - How much money do I have cos I need to pay that [credit card]{"entity": "account_type", "value": "credit"} bill
+    - Balance please because I would like to pay 100000 kenya shillings toward my [Emblem](credit_card) [card](account_type), tomorrow
+    - so.... what's my [balance](amount-of-money) i would like to pay ksh.50000 towards [american express](credit_card) [card](account_type), tomorrow
+    - hi, whats my account bal please because i'd like to pay my bill
+    -  Hello, I would like to know how much money is in much money is in my account because i need to pay off my [credit card]{"entity": "account_type", "value": "credit"}?
+    - Could please you tell me my account [balance](amount-of-money) before i pay off my [credit card]{"entity": "account_type", "value": "credit"}
+    - i wanna know how much is there before paying my [credit card]{"entity": "account_type", "value": "credit"}     
+- intent: show_accounts
+  examples: |
+    - please list my accounts
+    - please show my accounts
+    - please get all my accounts
+    - show me my accounts details
+    - Display My Accounts
+    - Show accounts
+    - List my accounts
+    - List my account
+    - Can I check my account number
+    - can I have a look at my accounts
+    - Show my account details
+    - My accounts
+    - I’d like to see all my accounts
+    - Can I view my accounts
+    - Make a list of my accounts
+    - show my account numbers
+    - I want to see my accounts
+    - I would like to see all my accounts
+    - Display my bank account
+    - Overview of Accounts
+    - Show all my accounts
+    - please show my account summary
+    - please show my account balance
+    - information about account
+    - info on account
+    - show the details of my account
+    - List out all my accounts
+    - Fetch my accounts details
+    - get me my accounts information
+    - Please retrieve my accounts information
+- intent: show_credit_cards
+  examples: |
+    - please show my credit cards
+    - please list my credit cards
+    - show me my credit cards details
+    - what is my credit cards outstanding
+    - Display My Cards
+    - List my credit cards
+    - i need to see my credit cards
+    - Can I have access to a credit cards
+    - My credit cards
+    - I want to see my credit card details
+    - I’d like my credit cards displayed
+    - Can I see all my credit cards
+    - Show my cards
+    - Display Credit Cards
+    - Show Credit Cards
+    - Could you show me my credit cards
+    - I would like to see my credit cards
+    - Credit cards information
+    - Display my credit cards
+    - Credit Card Overvuew
+    - Show all my credit cards
+    - show my credit cards
+    - what all credit cards do I have?
+    - List out all my credit cards
+    - I want to see list of all my credit cards
+    - I would like to see information of all my credit cards
+- intent: interest_rate
+  examples: |
+    - yeah hi what is the current interest rate for loans
+    - what's the interest rate for a 30 year mortgage
+    - what's the availavble interest rate for mortgages today
+    - what's the interest rate for your golden credit cards
+    - what's the interest rate for your credit card
+    - What's the best interest rate I can get within your bank
+    - I need to borrow some money so I want to know the interest rates
+    - What are the interest rates if I ask for one hundred thousand
+- intent: lost_card
+  examples: |
+    - i've lost my card
+    - I don't know where my card is
+    - I have no idea where've left my card
+    - I left my card somewhere and now I need to cancel it
+    - I really don't remember where my card is
+    - I'm afraid I don't know where my card is
+    - I've lost my credit card and I don't think I will find it again
+    - My card is gone I must have left it somewhere
+    - I'm afraid someone took my card so I'd better cancel it
+    - I have no clue where is my card
+    - Can't find my card don't know what to do
+    - Can't find my card what should I do
+- intent: change_pin
+  examples: |
+    - I don't remember my pin and need to change it
+    - I want to change my pin because I can't remember it.
+    - How can I change my pin over the phone
+    - Is it possible to change my card's pin online
+    - Could you help me resetting my pin
+    - Can I get a new pin number for my card
+    - What do I need to do to get a new pin number
+    - How can I restore the secret code of my card
+    - I lost my card's secret number now I can't use it anymore
+    - Where can I find my card's pin
+    - Where can I find my card's secret code
+    - I think someone discovered my pin and I want to change it
+    - I want to change the secret digits to access my credit card.
+- intent: retirement_plan
+  examples: |
+    - I want to apply to a retirement savings plan
+    - What are the available plans for retirement in your bank
+    - what's the best RSP available in your products
+    - Do you offer retirement savings plans
+    - I want to invest some money for my retirement
+- intent: online_banking
+  examples: |
+    - I want to get access to online banking
+    - What can I do in the online banking
+    - How can I benefit from your online banking
+    - Do you have a mobile app for online banking
+    - Can I make transfer online
+    - Can I check my balance online
+    - I want to get a password for online banking
+    - What are the things I can do online and not over the phone
+    - Are there things that I can only do online?
+    - Please retrieve my transaction log
+- synonym: credit
+  examples: |
+    - credit card
+    - credit cards
+    - credit account
+    - credit accounts
+    - card
+    - cards
+    - credit card account
+- synonym: current balance
+  examples: |
+    - balance
+    - full
+    - full balance
+- synonym: safaricom
+  examples: |
+    - M Pesa
+    - mpesa
+    - M-Pesa
+    - m-pesa
+    - M-pesa
+    - Mpesa
+    - MPesa
+- synonym: airtel
+  examples: |
+    - Airtel Money
+    - airtel money
+    - Airtelmoney
+    - Airtel-Money      
+
+
+
+
